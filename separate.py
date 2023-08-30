@@ -101,8 +101,10 @@ class  _audio_pre_():
 if __name__ == '__main__':
     device = 'cuda'
     is_half=True
-    model_path='uvr5_weights/2_HP-UVR.pth'
-    pre_fun = _audio_pre_(model_path=model_path,device=device,is_half=True)
-    audio_path = 'audio.aac'
-    save_path = 'opt'
-    pre_fun._path_audio_(audio_path , save_path,save_path)
+    model_path='VR_Models/4_HP-Vocal-UVR.pth'
+    file_list = os.listdir('trimmed')
+    for file_ in file_list:
+        audio_path = os.path.join('trimmed', file_)
+        pre_fun = _audio_pre_(model_path=model_path,device=device,is_half=True)
+        save_path = 'vocal'
+        pre_fun._path_audio_(audio_path , save_path,save_path)
